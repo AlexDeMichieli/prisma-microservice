@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@alexdemichieli/datasources": "^1.0.3",
+    "@alexdemichieli/datasources": "^1.0.6",
     "@prisma/client": "^5.15.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
