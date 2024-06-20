@@ -8,16 +8,20 @@
   },
   "scripts": {
     "generate": "npx prisma generate",
-    "postinstall": "npm run generate"
+    "postinstall": "npm run generate",
+    "release": "standard-version"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.15.0",
+    "@prisma/client": ">=5",
     "prisma": "^5.15.0"
   },
   "peerDependencies": {
     "@prisma/client": ">=5"
+  },
+  "devDependencies": {
+    "standard-version": "^9.5.0"
   }
 }
