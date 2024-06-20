@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # - name: Run tests
+      #   run: npm test
+
   publish:
     needs: build-and-test
     runs-on: ubuntu-latest
@@ -48,20 +51,14 @@ jobs:
           git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
           git config --global user.name "${{ secrets.GIT_USER_NAME }}"
 
-      - name: Install jq
-        run: sudo apt-get install -y jq
 
-      - name: Bump version and push changes
+      - name: Authenticate and Publish
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          NEW_VERSION=$(npm version patch)
+          npm version patch
           git add package.json
-          git commit -m "chore(release): update version to ${NEW_VERSION}"
+          git commit -m "chore(release): update version to $(jq -r '.version' package.json)"
           git push origin main
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish to npm
-        run: npm publish
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
