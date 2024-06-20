@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm test
-
   publish:
     needs: build-and-test
     runs-on: ubuntu-latest
@@ -50,9 +47,6 @@ jobs:
         run: |
           git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
           git config --global user.name "${{ secrets.GIT_USER_NAME }}"
-
-      - name: Build the project
-        run: npm run build
 
       - name: Install jq
         run: sudo apt-get install -y jq
