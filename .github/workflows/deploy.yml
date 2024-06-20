@@ -51,10 +51,10 @@ jobs:
           git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
           git config --global user.name "${{ secrets.GIT_USER_NAME }}"
 
-      # - name: Bump Version and Create Changelog
-      #   run: npm run release
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+      - name: Bump Version and Create Changelog
+        run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
       
       - name: Push Changes
         run: |
@@ -63,7 +63,6 @@ jobs:
       - name: Authenticate and Publish
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          npm version patch
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
