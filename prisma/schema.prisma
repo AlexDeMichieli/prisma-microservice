@@ -25,7 +25,7 @@ model Author {
 // Define the User table
 model Post {
   id        Int       @id @default(autoincrement())
-  title     String
+  title     String?
   content   String
   authorId  Int       // Define a foreign key to associate the post with an author
   author    Author    @relation(fields: [authorId], references: [id])
