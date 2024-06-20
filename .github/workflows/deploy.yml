@@ -56,6 +56,9 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
           npm version patch
+          git add package.json
+          git commit -m "chore(release): update version to $(jq -r '.version' package.json)"
+          git push origin main
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
