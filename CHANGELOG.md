@@ -16,6 +16,4 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.0.4](https://github.com/AlexDeMichieli/prisma-microservice/compare/v1.0.3...v1.0.4) (2024-06-20)
 
-=======
->>>>>>> origin/main
 ### 1.0.3 (2024-06-20)
